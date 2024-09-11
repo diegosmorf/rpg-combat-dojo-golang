@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func Test_WhenRun2Turns_Then_ShowWinner(t *testing.T) {
+func Test_GivenNewBattle_WhenRun2Turns_Then_ShowWinner(t *testing.T) {
 	// arrange
 	expectedNumberOfTurns := 2
 	player1, _ := player.New(player.BuildSoldier("Player-1"))

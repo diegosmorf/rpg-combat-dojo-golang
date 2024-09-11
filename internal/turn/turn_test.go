@@ -113,7 +113,7 @@ func Test_WhenRunPhysicalAttack_Then_CheckDamage(t *testing.T) {
 
 	for i := 0; i < len(validOptions); i++ {
 		player1, _ := player.New(player.BuildSoldier("Player-1"))
-		player2, _ := player.New(player.BuildSoldier("Player-1"))
+		player2, _ := player.New(player.BuildSoldier("Player-2"))
 		dice := dice.New(dice.BuildOnlyValue(validOptions[i].Value))
 		expectedDamaged := validOptions[i].ExpectedDamaged
 		initialP2Health := player2.Health.Current
@@ -141,7 +141,7 @@ func Test_WhenRunFireball_Then_CheckDamage(t *testing.T) {
 
 	for i := 0; i < len(validOptions); i++ {
 		player1, _ := player.New(player.BuildWizard("Player-1"))
-		player2, _ := player.New(player.BuildSoldier("Player-1"))
+		player2, _ := player.New(player.BuildSoldier("Player-2"))
 		dice := dice.New(dice.BuildOnlyValue(validOptions[i].Value))
 		expectedDamaged := validOptions[i].ExpectedDamaged
 		initialP2Health := player2.Health.Current

@@ -17,7 +17,7 @@ var validTypes = []struct {
 	{Item, "Item", 3},
 }
 
-func Test_WhenUseValidActions_Then_GetIndexNameSuccessfully(t *testing.T) {
+func Test_GivenValidActions_WhenValidate_Then_Success(t *testing.T) {
 
 	for i := 0; i < len(validTypes); i++ {
 		// arrange

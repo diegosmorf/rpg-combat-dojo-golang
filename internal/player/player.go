@@ -1,7 +1,6 @@
 package player
 
 import (
-	"dojo/internal/utils"
 	"fmt"
 )
 
@@ -28,6 +27,8 @@ const (
 	DefenseLevelUp      int    = 10
 	MagicLevelUp        int    = 10
 )
+
+var numberOfPlayers = 0
 
 func New(builder ...PlayerBuilderFunc) (*Player, error) {
 	player := BuildDefault()()
@@ -97,6 +98,7 @@ func (player *Player) IsValid() error {
 type PlayerBuilderFunc func() Player
 
 func BuildAllFields(name string, job PlayerJob, health int, level int, strength int, defense int, magic int) PlayerBuilderFunc {
+
 	return func() Player {
 		return Player{
 			Name:       name,
@@ -135,6 +137,11 @@ func BuildSoldier(name string) PlayerBuilderFunc {
 
 func BuildDefault() PlayerBuilderFunc {
 	return func() Player {
-		return BuildSoldier("Player-" + utils.GetUniqueId())()
+		return BuildSoldier(GetUniqueName())()
 	}
+}
+
+func GetUniqueName() string {
+	numberOfPlayers++
+	return fmt.Sprintf("Player-%d", numberOfPlayers)
 }

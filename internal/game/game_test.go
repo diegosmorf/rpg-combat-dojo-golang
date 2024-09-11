@@ -32,7 +32,7 @@ var validPlayerNames = []string{
 
 func Test_WhenGameAddValidPlayers_Then_NumberIsCorrect(t *testing.T) {
 
-	game := Game{Name: "Game-Test"}
+	game := Game{}
 	expectedPlayers := 0
 
 	for i := 0; i < len(validPlayerNames); i++ {
@@ -51,7 +51,7 @@ func Test_WhenGameAddValidPlayers_Then_NumberIsCorrect(t *testing.T) {
 func Test_WhenGameRunBattle_Soldier_Soldier_Then_ShowWinner(t *testing.T) {
 	// arrange
 	maxTurns := 100
-	game := Game{Name: "Game-Test"}
+	game := Game{}
 	player1, _ := p.New(p.BuildSoldier("Player-1"))
 	player2, _ := p.New(p.BuildSoldier("Player-2"))
 
@@ -73,7 +73,7 @@ func Test_WhenGameRunBattle_Soldier_Soldier_Then_ShowWinner(t *testing.T) {
 func Test_WhenGameRunBattle_Soldier_Archer_Then_ShowWinner(t *testing.T) {
 	// arrange
 	maxTurns := 100
-	game := Game{Name: "Game-Test"}
+	game := Game{}
 	player1, _ := p.New(p.BuildSoldier("Player-1"))
 	player2, _ := p.New(p.BuildArcher("Player-2"))
 

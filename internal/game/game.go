@@ -7,7 +7,6 @@ import (
 )
 
 type Game struct {
-	Name    string
 	Players []player.Player
 	Battles []battle.Battle
 }
@@ -17,7 +16,7 @@ func New() (*Game, error) {
 	p1, _ := player.New(player.BuildKnight("Arthur King"))
 	p2, _ := player.New(player.BuildWizard("Merlin the Magician"))
 
-	game := Game{Name: "RPG-Game-1"}
+	game := Game{}
 	game.AddPlayer(p1)
 	game.AddPlayer(p2)
 
