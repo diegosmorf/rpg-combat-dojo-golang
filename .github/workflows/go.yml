@@ -26,11 +26,11 @@ jobs:
 
   sonarCloudTrigger:
     needs: build
-    name: SonarCloud Trigger
+    name: SonarCloud Analysis
     runs-on: ubuntu-latest
     steps:
       - name: Clone Repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
@@ -38,3 +38,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           PROJECT_KEY: ${{ secrets.PROJECT_KEY }}
           SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
+          args: 
+            -Dsonar.organization=${{PROJECT_KEY}}
+            -Dsonar.projectKey=${{PROJECT_KEY}}
+            -Dsonar.python.coverage.reportPaths=coverage.xml         
