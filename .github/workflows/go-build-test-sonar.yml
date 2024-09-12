@@ -32,11 +32,8 @@ jobs:
         PROJECT_KEY: ${{ secrets.PROJECT_KEY }}
         SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
       with:
-        args: >
-          -Dsonar.organization= "diegosmorf"
-          -Dsonar.login="${{ secrets.SONAR_TOKEN }}" 
-          -Dsonar.host.url="https://sonarcloud.io" 
-          -Dsonar.projectKey="diegosmorf_rpg-combat-dojo-golang"
+        args: >          
+          -Dsonar.host.url="https://sonarcloud.io"           
           -Dsonar.go.coverage.reportPaths=coverage.out       
           -Dsonar.go.tests.reportPaths=test.out
           -Dsonar.verbose=true
