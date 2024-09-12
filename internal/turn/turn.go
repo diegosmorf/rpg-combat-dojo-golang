@@ -16,9 +16,9 @@ type Turn struct {
 
 func RunPhysicalAttack(actor *player.Player, target *player.Player, normalDice dice.Dice) Turn {
 
-	random_act := normalDice.Roll()
-	random_tgt := normalDice.Roll()
-	damage := (actor.Strength * random_act) - (target.Defense * random_tgt)
+	actorDiceValue := normalDice.Roll()
+	targetDiceValue := normalDice.Roll()
+	damage := (actor.Strength * actorDiceValue) - (target.Defense * targetDiceValue)
 	experience := calculateExperience(target.Health.Current, damage)
 	target.Health.ApplyDamage(damage)
 	actor.IncreaseExperience(experience)
@@ -32,9 +32,9 @@ func RunPhysicalAttack(actor *player.Player, target *player.Player, normalDice d
 
 func RunMagicFireBall(actor *player.Player, target *player.Player, magicDice dice.Dice) Turn {
 
-	random_act := magicDice.Roll()
-	random_tgt := magicDice.Roll()
-	damage := (actor.Magic * random_act) - (target.Magic * random_tgt)
+	actorDiceValue := magicDice.Roll()
+	targetDiceValue := magicDice.Roll()
+	damage := (actor.Magic * actorDiceValue) - (target.Magic * targetDiceValue)
 	experience := calculateExperience(target.Health.Current, damage)
 	target.Health.ApplyDamage(damage)
 	actor.IncreaseExperience(experience)
@@ -48,8 +48,8 @@ func RunMagicFireBall(actor *player.Player, target *player.Player, magicDice dic
 
 func RunMagicHeal(actor *player.Player, target *player.Player, magicDice dice.Dice) Turn {
 
-	random_act := magicDice.Roll()
-	heal := (actor.Strength * random_act)
+	actorDiceValue := magicDice.Roll()
+	heal := (actor.Strength * actorDiceValue)
 	target.Health.ApplyHeal(heal)
 	experience := calculateExperience(actor.Health.Current, heal)
 	actor.IncreaseExperience(experience)
