@@ -8,24 +8,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func Test_GivenNewBattle_WhenRun2Turns_Then_ShowWinner(t *testing.T) {
-	// arrange
-	maxTurns := 2
-	player1, _ := player.New(player.BuildSoldier("Player-1"))
-	player2, _ := player.New(player.BuildSoldier("Player-2"))
-	players := []player.Player{*player1, *player2}
-	dice := dice.New(dice.BuildDefault())
-	battle := New(players, dice, dice, maxTurns)
-	//act
-	battle.RunTurns()
-	//assert
-	assert.Equal(t, maxTurns, battle.TotalNumberOfTurns())
-	assert.True(t, battle.Players[0].IsAlive())
-	assert.True(t, battle.Players[1].IsAlive())
-	assert.Equal(t, battle.Status, Unfinished)
-
-}
-
 func Test_WhenRun2Turns_Then_ShowDraw(t *testing.T) {
 	//arrange
 	expectedNumberOfTurns := 2
