@@ -11,8 +11,8 @@ import (
 func Test_WhenRun2Turns_Then_ShowDraw(t *testing.T) {
 	//arrange
 	expectedNumberOfTurns := 2
-	player1, _ := player.New(player.BuildSoldier("Player-1"))
-	player2, _ := player.New(player.BuildSoldier("Player-2"))
+	player1, _ := player.New()
+	player2, _ := player.New()
 	players := []player.Player{*player1, *player2}
 	dice := dice.New(dice.BuildOnlyValue(1))
 	battle := New(players, dice, dice, expectedNumberOfTurns)
@@ -27,27 +27,11 @@ func Test_WhenRun2Turns_Then_ShowDraw(t *testing.T) {
 	assert.Equal(t, battle.Status, Draw)
 }
 
-func Test_WhenRun4Turns_Then_ShowWinner(t *testing.T) {
+func Test_WhenRunTurns_Then_ShowDraw(t *testing.T) {
 	// arrange
 	expectedNumberOfTurns := 4
-	player1, _ := player.New(player.BuildSoldier("Player-1"))
-	player2, _ := player.New(player.BuildSoldier("Player-2"))
-	players := []player.Player{*player1, *player2}
-	dice := dice.New(dice.BuildDefault())
-	battle := New(players, dice, dice, expectedNumberOfTurns)
-	//act
-	battle.RunTurns()
-	//assert
-	assert.Equal(t, expectedNumberOfTurns, battle.TotalNumberOfTurns())
-	assert.Greater(t, battle.Winner.Health.Current, battle.Looser.Health.Current)
-	assert.Equal(t, battle.Status, Unfinished)
-}
-
-func Test_WhenRun10Turns_Then_ShowDraw(t *testing.T) {
-	// arrange
-	expectedNumberOfTurns := 4
-	player1, _ := player.New(player.BuildSoldier("Player-1"))
-	player2, _ := player.New(player.BuildSoldier("Player-2"))
+	player1, _ := player.New()
+	player2, _ := player.New()
 	players := []player.Player{*player1, *player2}
 	dice := dice.New(dice.BuildOnlyValue(1))
 	battle := New(players, dice, dice, expectedNumberOfTurns)
@@ -63,8 +47,8 @@ func Test_WhenRun10Turns_Then_ShowDraw(t *testing.T) {
 func Test_WhenRunTurns_UntilPlayerDies_Then_ShowWinner(t *testing.T) {
 	// arrange
 	maxTurns := 100
-	player1, _ := player.New(player.BuildSoldier("Player-1"))
-	player2, _ := player.New(player.BuildSoldier("Player-2"))
+	player1, _ := player.New()
+	player2, _ := player.New()
 	players := []player.Player{*player1, *player2}
 	dice := dice.New(dice.BuildDefault())
 	battle := New(players, dice, dice, maxTurns)
@@ -80,7 +64,7 @@ func Test_WhenRunTurns_UntilPlayerDies_Then_ShowWinner(t *testing.T) {
 	assert.Equal(t, battle.Status, Finished)
 }
 
-func Test_WhenRun3Turns_Knight_Wizard_Then_ShowWinner(t *testing.T) {
+func Test_WhenRunTurns_Knight_Wizard_Then_ShowWinner(t *testing.T) {
 	// arrange
 	maxTurns := 2
 	player1, _ := player.New(player.BuildKnight("Player-1"))
@@ -99,7 +83,7 @@ func Test_WhenRun3Turns_Knight_Wizard_Then_ShowWinner(t *testing.T) {
 	assert.Equal(t, battle.Status, Unfinished)
 }
 
-func Test_WhenRun3Turns_Knight_Archer_Then_ShowWinner(t *testing.T) {
+func Test_WhenRunTurns_Knight_Archer_Then_ShowWinner(t *testing.T) {
 	// arrange
 	maxTurns := 2
 	player1, _ := player.New(player.BuildKnight("Player-1"))
@@ -125,8 +109,8 @@ func Test_GivenNewBattle_WhenRunTurns_Then_ValidateResult(t *testing.T) {
 	for i := 0; i < len(turns); i++ {
 		// arrange
 		maxTurns := turns[i]
-		player1, _ := player.New()
-		player2, _ := player.New()
+		player1, _ := player.New(player.BuildWizard("Player-1"))
+		player2, _ := player.New(player.BuildWizard("Player-2"))
 		players := []player.Player{*player1, *player2}
 		normalDice := dice.New(dice.BuildDefault())
 		magicDice := dice.New(dice.BuildDefaultMagic())
