@@ -33,6 +33,7 @@ jobs:
         SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
       with:
         args: >                    
+          -Dsonar.project_key=diegosmorf_rpg-combat-dojo-golang
           -Dsonar.go.coverage.reportPaths=cover.out       
           -Dsonar.go.tests.reportPaths=test.out
           -Dsonar.verbose=true
