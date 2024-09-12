@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:      
+        fetch-depth: 0
 
     - name: Set up Go
       uses: actions/setup-go@v4
@@ -21,13 +23,15 @@ jobs:
     - name: Build
       run: go build -v ./...
 
+    - name: Vet
+      run: go vet -v ./...
+
     - name: Test
       run: go test ./... -coverprofile=cover.out
 
-    - name: Analyze with SonarCloud
+    - name: SonarCloud Analysis
       uses: sonarsource/sonarcloud-github-action@v3
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        PROJECT_KEY: "diegosmorf_rpg-combat-dojo-golang"
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}        
+        PROJECT_KEY: ${{ secrets.PROJECT_KEY }}
         SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}   
