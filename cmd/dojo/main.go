@@ -6,6 +6,7 @@ import (
 	game "dojo/internal/game"
 	"dojo/internal/player"
 	"dojo/internal/turn"
+	"fmt"
 	"log"
 )
 
@@ -21,6 +22,12 @@ func CreateNewGame() bool {
 	return true
 }
 
+func printPlayers(players []player.Player) {
+	for index, p := range players {
+		printPlayer(fmt.Sprintf("Player-%d", index), &p)
+	}
+}
+
 func printPlayer(message string, p *player.Player) {
 	print("%s: %s - Job: %s - Health: %d - Level: %d", message, p.Name, p.Job, p.Health.Current, p.Level)
 }
@@ -33,8 +40,7 @@ func printGame(g *game.Game) {
 	printRule()
 	print("Welcome to Dojo RPG Combat System - Version GoLang")
 	printRule()
-	printPlayer("Player 1", &g.Players[0])
-	printPlayer("Player 2", &g.Players[1])
+	printPlayers(g.Players)
 	printRule()
 
 	for index, battle := range g.Battles {

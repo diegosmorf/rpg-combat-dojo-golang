@@ -69,7 +69,7 @@ func (battle *Battle) RunTurns() {
 
 func (battle *Battle) RunTurn(actor *player.Player, target *player.Player) turn.Turn {
 
-	if actor.Health.Current < 100 {
+	if actor.Health.Current < 150 {
 		return turn.RunMagicHeal(actor, actor, battle.MagicDice)
 	}
 

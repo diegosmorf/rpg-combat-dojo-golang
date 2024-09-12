@@ -1,5 +1,7 @@
 # Dojo RPG Combat System - Version GoLang
 
+![RPG logo](./images/logo.png)
+
 This is a fun kata that aim to build simple combat rules  for a role-playing game (RPG). It is implemented as a sequence of iterations.
 
 from [source repo](https://github.com/diegodocs/coding-dojo/blob/main/challenges/rpg-combat.md)
@@ -16,7 +18,7 @@ from [source repo](https://github.com/diegodocs/coding-dojo/blob/main/challenges
 
 go build ./...
 go test ./... -coverprofile=cover.out
-go run .\cmd\dojo\main.go
+go run ./cmd/dojo/main.go
 ```
 
 ## Instructions
