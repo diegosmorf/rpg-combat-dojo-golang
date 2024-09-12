@@ -36,7 +36,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}        
       with:
         args: >                    
-          -Dsonar.project_key=${{ secrets.PROJECT_KEY }}
+          -Dsonar.projectKey=${{ secrets.PROJECT_KEY }}
           -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
           -Dsonar.go.coverage.reportPaths=cover.out       
           -Dsonar.go.tests.reportPaths=test.out
