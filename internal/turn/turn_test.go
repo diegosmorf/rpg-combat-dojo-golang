@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func Test_WhenSoldier1Attack_Then_ApplyDamageToPlayer2(t *testing.T) {
+func Test_GivenSoldier_WhenAttack_Then_ApplyDamage(t *testing.T) {
 
 	// arrange
 	var validOptions = []struct {
@@ -24,8 +24,8 @@ func Test_WhenSoldier1Attack_Then_ApplyDamageToPlayer2(t *testing.T) {
 	}
 
 	for i := 0; i < len(validOptions); i++ {
-		player1, _ := player.New(player.BuildSoldier("Player-1"))
-		player2, _ := player.New(player.BuildSoldier("Player-2"))
+		player1, _ := player.New()
+		player2, _ := player.New()
 		dice := dice.New(dice.BuildOnlyValue(validOptions[i].Value))
 		expectedDamaged := validOptions[i].ExpectedDamaged
 		initialP2Health := player2.Health.Current
@@ -38,7 +38,7 @@ func Test_WhenSoldier1Attack_Then_ApplyDamageToPlayer2(t *testing.T) {
 	}
 }
 
-func Test_WhenSoldier1Heal_Then_ApplyHealToPlayer1(t *testing.T) {
+func Test_GivenSoldier_WhenHeal_Then_ApplyHeal(t *testing.T) {
 
 	// arrange
 	var validOptions = []struct {
@@ -55,7 +55,7 @@ func Test_WhenSoldier1Heal_Then_ApplyHealToPlayer1(t *testing.T) {
 
 	for i := 0; i < len(validOptions); i++ {
 		initialHealthP1 := 1
-		player1, _ := player.New(player.BuildSoldier("Player-1"))
+		player1, _ := player.New()
 		player1.Health.Current = initialHealthP1
 		dice := dice.New(dice.BuildOnlyValue(validOptions[i].Value))
 		expectedHeal := validOptions[i].ExpectedHeal
@@ -67,7 +67,7 @@ func Test_WhenSoldier1Heal_Then_ApplyHealToPlayer1(t *testing.T) {
 	}
 }
 
-func Test_WhenWizard1Fireball_Then_ApplyDamageToPlayer2(t *testing.T) {
+func Test_GivenWizard_WhenRunFireball_Then_ApplyDamage(t *testing.T) {
 
 	// arrange
 	var validOptions = []struct {
@@ -112,8 +112,8 @@ func Test_WhenRunPhysicalAttack_Then_CheckDamage(t *testing.T) {
 	}
 
 	for i := 0; i < len(validOptions); i++ {
-		player1, _ := player.New(player.BuildSoldier("Player-1"))
-		player2, _ := player.New(player.BuildSoldier("Player-2"))
+		player1, _ := player.New()
+		player2, _ := player.New()
 		dice := dice.New(dice.BuildOnlyValue(validOptions[i].Value))
 		expectedDamaged := validOptions[i].ExpectedDamaged
 		initialP2Health := player2.Health.Current
@@ -141,7 +141,7 @@ func Test_WhenRunFireball_Then_CheckDamage(t *testing.T) {
 
 	for i := 0; i < len(validOptions); i++ {
 		player1, _ := player.New(player.BuildWizard("Player-1"))
-		player2, _ := player.New(player.BuildSoldier("Player-2"))
+		player2, _ := player.New()
 		dice := dice.New(dice.BuildOnlyValue(validOptions[i].Value))
 		expectedDamaged := validOptions[i].ExpectedDamaged
 		initialP2Health := player2.Health.Current

@@ -40,4 +40,6 @@ jobs:
           -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
           -Dsonar.go.coverage.reportPaths=cover.out       
           -Dsonar.go.tests.reportPaths=test.out
+          -Dsonar.exclusions=**/*_test.go
+          -Dsonar.test.inclusions=**/*_test.go
           -Dsonar.verbose=true
