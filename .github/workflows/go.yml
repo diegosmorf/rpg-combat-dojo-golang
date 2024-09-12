@@ -25,9 +25,17 @@ jobs:
       run: go test ./... -coverprofile=cover.out
 
     - name: Analyze with SonarCloud
-      uses: sonarsource/sonarcloud-github-action@master
+      uses: sonarsource/sonarcloud-github-action@v3
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         PROJECT_KEY: ${{ secrets.PROJECT_KEY }}
         SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}       
+        args: >
+          -Dsonar.organization= ${{ secrets.SONAR_ORGANIZATION }} 
+          -Dsonar.login="${{ secrets.SONAR_TOKEN }}" 
+          -Dsonar.host.url="https://sonarcloud.io" 
+          -Dsonar.projectKey= ${{ secrets.PROJECT_KEY }}
+          -Dsonar.go.coverage.reportPaths=coverage.out       
+          -Dsonar.go.tests.reportPaths=test.out
+          -Dsonar.verbose=true
