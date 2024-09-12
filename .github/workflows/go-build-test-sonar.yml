@@ -31,7 +31,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         PROJECT_KEY: ${{ secrets.PROJECT_KEY }}
         SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}       
-        args: >
+        args: 
           -Dsonar.organization= ${{ secrets.SONAR_ORGANIZATION }} 
           -Dsonar.login="${{ secrets.SONAR_TOKEN }}" 
           -Dsonar.host.url="https://sonarcloud.io" 
