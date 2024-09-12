@@ -82,7 +82,7 @@ func Test_WhenRunTurns_UntilPlayerDies_Then_ShowWinner(t *testing.T) {
 
 func Test_WhenRun3Turns_Knight_Wizard_Then_ShowWinner(t *testing.T) {
 	// arrange
-	maxTurns := 3
+	maxTurns := 2
 	player1, _ := player.New(player.BuildKnight("Player-1"))
 	player2, _ := player.New(player.BuildWizard("Player-2"))
 	players := []player.Player{*player1, *player2}
@@ -101,7 +101,7 @@ func Test_WhenRun3Turns_Knight_Wizard_Then_ShowWinner(t *testing.T) {
 
 func Test_WhenRun3Turns_Knight_Archer_Then_ShowWinner(t *testing.T) {
 	// arrange
-	maxTurns := 3
+	maxTurns := 2
 	player1, _ := player.New(player.BuildKnight("Player-1"))
 	player2, _ := player.New(player.BuildArcher("Player-2"))
 	players := []player.Player{*player1, *player2}

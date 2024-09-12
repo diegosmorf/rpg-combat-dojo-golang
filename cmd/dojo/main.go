@@ -30,6 +30,7 @@ func printRule() {
 }
 
 func printGame(g *game.Game) {
+	printRule()
 	print("Welcome to Dojo RPG Combat System - Version GoLang")
 	printRule()
 	printPlayer("Player 1", &g.Players[0])
