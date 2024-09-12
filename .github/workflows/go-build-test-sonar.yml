@@ -32,6 +32,12 @@ jobs:
     - name: SonarCloud Analysis
       uses: sonarsource/sonarcloud-github-action@v3
       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}        
-        PROJECT_KEY: ${{ secrets.PROJECT_KEY }}
-        SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}   
+      with:
+        args: >                    
+          -Dsonar.project_key=${{ secrets.PROJECT_KEY }}
+          -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+          -Dsonar.go.coverage.reportPaths=cover.out       
+          -Dsonar.go.tests.reportPaths=test.out
+          -Dsonar.verbose=true
